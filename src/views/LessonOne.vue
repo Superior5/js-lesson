@@ -15,6 +15,12 @@ const menuOpen = ref(false)
 const activeId = ref('program')
 const progress = ref(0)
 const useIcons = { Globe2, Server, TerminalSquare, Smartphone, Monitor, Cog }
+const consoleExamples = 'console.log("Привет");\nconsole.log("JavaScript");\nconsole.log(123);\nconsole.log(10 + 20);'
+const consoleResult = 'Привет\nJavaScript\n123\n30'
+const arithmeticExamples = 'console.log(10 + 5); // 15\nconsole.log(10 - 5); // 5\nconsole.log(10 * 5); // 50\nconsole.log(10 / 5); // 2'
+const stringExamples = 'console.log("Hello");\nconsole.log("JavaScript");\nconsole.log("Hello " + "World");'
+const homeworkMath = '24 + 35\n125 - 48\n12 * 12\n144 / 12\n37 % 5'
+const homeworkPrediction = '// Я думаю, здесь будет 10\nconsole.log(5 + 5);\nconsole.log("5" + "5");\nconsole.log(10 + 2 * 5);\nconsole.log((10 + 2) * 5);\nconsole.log("Hello " + "JavaScript");'
 let observer
 
 function toggleTheme() {
@@ -75,7 +81,7 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
 
         <LessonSection id="languages" number="03" title="Языки программирования">
           <p>Компьютер не понимает JavaScript напрямую — процессор выполняет машинные инструкции. Язык программирования позволяет нам записывать алгоритмы в понятной человеку форме, а специальные программы переводят их для компьютера.</p>
-          <div class="code-pair"><div><span>Псевдокод</span><CodeBlock code={'вывести "Привет"'} language="text" label="Псевдокод" /></div><div><span>JavaScript</span><CodeBlock code={'console.log("Привет");'} language="javascript" /></div></div>
+          <div class="code-pair"><div><span>Псевдокод</span><CodeBlock :code="'вывести &quot;Привет&quot;'" language="text" label="Псевдокод" /></div><div><span>JavaScript</span><CodeBlock :code="'console.log(&quot;Привет&quot;);'" language="javascript" /></div></div>
           <InfoBlock type="info" title="Синтаксис"><p>Это правила записи конструкций языка программирования — как грамматика в обычном языке.</p></InfoBlock>
         </LessonSection>
 
@@ -99,19 +105,19 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
           <p class="muted">npm устанавливается вместе с Node.js. Подробно мы познакомимся с ним позже.</p>
           <hr />
           <h3>Создайте файл <code>index.js</code></h3>
-          <CodeBlock code={'console.log("Hello, world!");'} language="javascript" />
+          <CodeBlock :code="'console.log(&quot;Hello, world!&quot;);'" language="javascript" />
           <p>Запустите его из папки проекта:</p><CodeBlock code="node index.js" language="bash" /><CodeBlock code="Hello, world!" language="text" />
           <div class="run-flow"><span><FileCode2 />index.js</span><ArrowDown /><span><Play />Node.js читает программу</span><ArrowDown /><span><Code2 />JavaScript выполняется</span><ArrowDown /><span><TerminalSquare />Результат в терминале</span></div>
         </LessonSection>
 
         <LessonSection id="console" number="07" title="console.log()">
           <p><code>console.log()</code> выводит значение в консоль. Это один из самых простых способов увидеть результат работы программы.</p>
-          <CodeBlock :code="`console.log(\"Привет\");\nconsole.log(\"JavaScript\");\nconsole.log(123);\nconsole.log(10 + 20);`" language="javascript" />
-          <CodeBlock :code="`Привет\nJavaScript\n123\n30`" language="text" />
+          <CodeBlock :code="consoleExamples" language="javascript" />
+          <CodeBlock :code="consoleResult" language="text" />
         </LessonSection>
 
         <LessonSection id="numbers" number="08" title="Числа и арифметика">
-          <CodeBlock :code="`console.log(10 + 5); // 15\nconsole.log(10 - 5); // 5\nconsole.log(10 * 5); // 50\nconsole.log(10 / 5); // 2`" language="javascript" />
+          <CodeBlock :code="arithmeticExamples" language="javascript" />
           <div class="operator-grid"><span><b>+</b> сложение</span><span><b>−</b> вычитание</span><span><b>×</b> умножение</span><span><b>÷</b> деление</span><span><b>%</b> остаток</span></div>
           <h3>Остаток от деления</h3><CodeBlock code="console.log(10 % 3); // 1" language="javascript" />
           <p>Десять делится на три три раза, и ещё одна единица остаётся — поэтому результат равен <strong>1</strong>.</p>
@@ -120,10 +126,10 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
 
         <LessonSection id="strings" number="09" title="Строки">
           <p>Текстовые значения называются <strong>строками</strong>. В JavaScript строку записывают внутри кавычек.</p>
-          <CodeBlock :code="`console.log(\"Hello\");\nconsole.log(\"JavaScript\");\nconsole.log(\"Hello \" + \"World\");`" language="javascript" />
+          <CodeBlock :code="stringExamples" language="javascript" />
           <CodeBlock code="Hello World" language="text" />
           <h3>Число или строка?</h3>
-          <div class="comparison"><div><CodeBlock code="console.log(10 + 20);" language="javascript" /><strong>30</strong><small>Числа складываются</small></div><div><CodeBlock code={'console.log("10" + "20");'} language="javascript" /><strong>1020</strong><small>Строки соединяются</small></div><div><CodeBlock code={'console.log("10 + 20");'} language="javascript" /><strong>10 + 20</strong><small>Это просто текст</small></div></div>
+          <div class="comparison"><div><CodeBlock code="console.log(10 + 20);" language="javascript" /><strong>30</strong><small>Числа складываются</small></div><div><CodeBlock :code="'console.log(&quot;10&quot; + &quot;20&quot;);'" language="javascript" /><strong>1020</strong><small>Строки соединяются</small></div><div><CodeBlock :code="'console.log(&quot;10 + 20&quot;);'" language="javascript" /><strong>10 + 20</strong><small>Это просто текст</small></div></div>
           <InfoBlock type="warning" title="Кавычки имеют значение"><p><code>10</code> — число, а <code>"10"</code> — строка. Типы данных подробно изучим на следующем занятии.</p></InfoBlock>
         </LessonSection>
       </div>
@@ -134,7 +140,7 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
         </div>
       </section>
 
-      <section id="homework" class="homework-section scroll-section"><div class="lesson-body"><div class="homework-header"><span><BookOpenCheck /></span><div><small>ЗАКРЕПЛЯЕМ МАТЕРИАЛ</small><h2>Домашнее задание</h2><p>Создайте файл <code>homework.js</code> и выполните три части.</p></div></div><div class="homework-parts"><article><span>01</span><div><h3>Вывод данных</h3><p>Программа должна вывести имя, фамилию, возраст и группу — каждое значение с новой строки.</p></div></article><article><span>02</span><div><h3>Вычисления</h3><CodeBlock :code="`24 + 35\n125 - 48\n12 * 12\n144 / 12\n37 % 5`" language="javascript" /></div></article><article><span>03</span><div><h3>Предскажите результат</h3><p>До запуска запишите свои ответы комментариями над строками:</p><CodeBlock :code="`// Я думаю, здесь будет 10\nconsole.log(5 + 5);\nconsole.log(\"5\" + \"5\");\nconsole.log(10 + 2 * 5);\nconsole.log((10 + 2) * 5);\nconsole.log(\"Hello \" + \"JavaScript\");`" language="javascript" /><p class="muted"><code>//</code> начинает однострочный комментарий. JavaScript его не выполняет.</p></div></article></div></div></section>
+      <section id="homework" class="homework-section scroll-section"><div class="lesson-body"><div class="homework-header"><span><BookOpenCheck /></span><div><small>ЗАКРЕПЛЯЕМ МАТЕРИАЛ</small><h2>Домашнее задание</h2><p>Создайте файл <code>homework.js</code> и выполните три части.</p></div></div><div class="homework-parts"><article><span>01</span><div><h3>Вывод данных</h3><p>Программа должна вывести имя, фамилию, возраст и группу — каждое значение с новой строки.</p></div></article><article><span>02</span><div><h3>Вычисления</h3><CodeBlock :code="homeworkMath" language="javascript" /></div></article><article><span>03</span><div><h3>Предскажите результат</h3><p>До запуска запишите свои ответы комментариями над строками:</p><CodeBlock :code="homeworkPrediction" language="javascript" /><p class="muted"><code>//</code> начинает однострочный комментарий. JavaScript его не выполняет.</p></div></article></div></div></section>
 
       <div class="lesson-body"><a class="next-lesson" href="#top" aria-label="Следующее занятие: Переменные и типы данных"><div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Переменные и типы данных</h2><p>let <i /> const <i /> typeof <i /> number <i /> string <i /> boolean</p></div><span><ArrowRight /></span></a><footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer></div>
     </main>
