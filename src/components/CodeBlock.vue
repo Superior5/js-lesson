@@ -4,15 +4,19 @@ import { Check, Copy } from 'lucide-vue-next'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import bash from 'highlight.js/lib/languages/bash'
+import json from 'highlight.js/lib/languages/json'
+import http from 'highlight.js/lib/languages/http'
 
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('http', http)
 
 const props = defineProps({ code: { type: String, required: true }, language: { type: String, default: 'javascript' }, label: String })
 const copied = ref(false)
 const cleanCode = computed(() => props.code.trim())
 const highlighted = computed(() => props.language === 'text' ? escapeHtml(cleanCode.value) : hljs.highlight(cleanCode.value, { language: props.language }).value)
-const languageLabel = computed(() => props.label || ({ javascript: 'JavaScript', bash: 'Terminal', text: 'Результат' }[props.language] || props.language))
+const languageLabel = computed(() => props.label || ({ javascript: 'JavaScript', bash: 'Terminal', json: 'JSON', http: 'HTTP', text: 'Результат' }[props.language] || props.language))
 
 function escapeHtml(value) { return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;') }
 async function copyCode() {
