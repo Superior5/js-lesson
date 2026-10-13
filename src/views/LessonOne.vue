@@ -1,19 +1,14 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { ArrowDown, ArrowRight, BookOpenCheck, CheckCircle2, ChevronRight, Code2, Cog, FileCode2, Globe2, Monitor, Play, Server, Smartphone, Star, TerminalSquare } from 'lucide-vue-next'
-import AppHeader from '../components/AppHeader.vue'
-import LessonSidebar from '../components/LessonSidebar.vue'
+import LessonLayout from '../components/LessonLayout.vue'
 import LessonHero from '../components/LessonHero.vue'
 import LessonSection from '../components/LessonSection.vue'
 import CodeBlock from '../components/CodeBlock.vue'
 import InfoBlock from '../components/InfoBlock.vue'
 import TaskBlock from '../components/TaskBlock.vue'
-import { bonusTasks, navigation, tasks, uses } from '../data/lessonOne'
+import { bonusTasks, tasks, uses } from '../data/lessonOne'
+import { lessonOne as lesson } from '../data/lessons'
 
-const theme = ref('light')
-const menuOpen = ref(false)
-const activeId = ref('program')
-const progress = ref(0)
 const useIcons = { Globe2, Server, TerminalSquare, Smartphone, Monitor, Cog }
 const consoleExamples = 'console.log("Привет");\nconsole.log("JavaScript");\nconsole.log(123);\nconsole.log(10 + 20);'
 const consoleResult = 'Привет\nJavaScript\n123\n30'
@@ -21,43 +16,11 @@ const arithmeticExamples = 'console.log(10 + 5); // 15\nconsole.log(10 - 5); // 
 const stringExamples = 'console.log("Hello");\nconsole.log("JavaScript");\nconsole.log("Hello " + "World");'
 const homeworkMath = '24 + 35\n125 - 48\n12 * 12\n144 / 12\n37 % 5'
 const homeworkPrediction = '// Я думаю, здесь будет 10\nconsole.log(5 + 5);\nconsole.log("5" + "5");\nconsole.log(10 + 2 * 5);\nconsole.log((10 + 2) * 5);\nconsole.log("Hello " + "JavaScript");'
-let observer
-
-function toggleTheme() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
-  document.documentElement.dataset.theme = theme.value
-  localStorage.setItem('lesson-theme', theme.value)
-}
-function navigate(id) {
-  menuOpen.value = false
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-function updateProgress() {
-  const max = document.documentElement.scrollHeight - window.innerHeight
-  progress.value = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0
-}
-
-onMounted(() => {
-  theme.value = localStorage.getItem('lesson-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-  document.documentElement.dataset.theme = theme.value
-  observer = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-    if (visible[0]) activeId.value = visible[0].target.id
-  }, { rootMargin: '-18% 0px -65% 0px', threshold: [0, 0.15, 0.5] })
-  document.querySelectorAll('.scroll-section').forEach(section => observer.observe(section))
-  window.addEventListener('scroll', updateProgress, { passive: true })
-  updateProgress()
-})
-onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scroll', updateProgress) })
 </script>
 
 <template>
-  <div class="reading-progress" :style="{ transform: `scaleX(${progress / 100})` }" />
-  <AppHeader :theme="theme" :menu-open="menuOpen" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
-  <div class="app-shell">
-    <LessonSidebar :items="navigation" :active-id="activeId" :open="menuOpen" @navigate="navigate" @close="menuOpen = false" />
-    <main>
-      <LessonHero />
+  <LessonLayout :navigation="lesson.sections" :lesson-number="lesson.number" :title="lesson.title">
+      <LessonHero :lesson="lesson" />
       <div class="lesson-body">
         <div class="intro-note"><BookOpenCheck :size="20" /><p><strong>После занятия вы сможете</strong> объяснить разницу между JavaScript и Node.js, запустить файл из терминала и использовать числа, строки и <code>console.log()</code>.</p></div>
 
@@ -142,7 +105,6 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
 
       <section id="homework" class="homework-section scroll-section"><div class="lesson-body"><div class="homework-header"><span><BookOpenCheck /></span><div><small>ЗАКРЕПЛЯЕМ МАТЕРИАЛ</small><h2>Домашнее задание</h2><p>Создайте файл <code>homework.js</code> и выполните три части.</p></div></div><div class="homework-parts"><article><span>01</span><div><h3>Вывод данных</h3><p>Программа должна вывести имя, фамилию, возраст и группу — каждое значение с новой строки.</p></div></article><article><span>02</span><div><h3>Вычисления</h3><CodeBlock :code="homeworkMath" language="javascript" /></div></article><article><span>03</span><div><h3>Предскажите результат</h3><p>До запуска запишите свои ответы комментариями над строками:</p><CodeBlock :code="homeworkPrediction" language="javascript" /><p class="muted"><code>//</code> начинает однострочный комментарий. JavaScript его не выполняет.</p></div></article></div></div></section>
 
-      <div class="lesson-body"><a class="next-lesson" href="#top" aria-label="Следующее занятие: Переменные и типы данных"><div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Переменные и типы данных</h2><p>let <i /> const <i /> typeof <i /> number <i /> string <i /> boolean</p></div><span><ArrowRight /></span></a><footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer></div>
-    </main>
-  </div>
+      <div class="lesson-body"><RouterLink class="next-lesson" to="/2" aria-label="Следующее занятие: Переменные и типы данных"><div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Переменные и типы данных</h2><p>let <i /> const <i /> typeof <i /> number <i /> string <i /> boolean</p></div><span><ArrowRight /></span></RouterLink><footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer></div>
+  </LessonLayout>
 </template>

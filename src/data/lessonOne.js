@@ -1,17 +1,3 @@
-export const navigation = [
-  ['program', 'Что такое программа'],
-  ['algorithm', 'Алгоритмы'],
-  ['languages', 'Языки программирования'],
-  ['javascript', 'Что такое JavaScript'],
-  ['nodejs', 'Что такое Node.js'],
-  ['setup', 'Установка и запуск'],
-  ['console', 'console.log()'],
-  ['numbers', 'Числа и арифметика'],
-  ['strings', 'Строки'],
-  ['practice', 'Практика'],
-  ['homework', 'Домашнее задание'],
-]
-
 export const uses = [
   ['Globe2', 'Frontend', 'Интерфейсы в браузере'],
   ['Server', 'Backend', 'Серверы и API'],

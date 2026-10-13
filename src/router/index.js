@@ -1,0 +1,22 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import LessonOne from '../views/LessonOne.vue'
+import LessonTwo from '../views/LessonTwo.vue'
+import HttpLabTwo from '../views/HttpLabTwo.vue'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    { path: '/', redirect: '/1' },
+    { path: '/1', name: 'lesson-one', component: LessonOne },
+    { path: '/2', name: 'lesson-two', component: LessonTwo },
+    { path: '/http-lab-2', name: 'http-lab-two', component: HttpLabTwo },
+    { path: '/:pathMatch(.*)*', redirect: '/1' },
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash, behavior: 'smooth', top: 92 }
+    return { top: 0 }
+  },
+})
+
+export default router

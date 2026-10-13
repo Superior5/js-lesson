@@ -1,7 +1,7 @@
 <script setup>
 import { BookOpen, Check } from 'lucide-vue-next'
 
-defineProps({ items: Array, activeId: String, open: Boolean })
+defineProps({ items: Array, activeId: String, open: Boolean, lessonNumber: Number, progress: Number })
 defineEmits(['navigate', 'close'])
 </script>
 
@@ -16,8 +16,8 @@ defineEmits(['navigate', 'close'])
       </a>
     </nav>
     <div class="sidebar-progress">
-      <span>Занятие 1 из 12</span>
-      <div><i /></div>
+      <span>Занятие {{ lessonNumber }} · прочитано {{ Math.round(progress) }}%</span>
+      <div><i :style="{ width: `${progress}%` }" /></div>
     </div>
   </aside>
 </template>
