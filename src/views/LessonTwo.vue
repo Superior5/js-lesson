@@ -58,7 +58,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         <CodeBlock :code="repeatCode" language="javascript" />
         <p>Откройте терминал в папке с файлом и запустите программу:</p>
         <CodeBlock code="node index.js" language="bash" />
-        <CodeBlock code="Hello, world!\n30" language="text" />
+        <CodeBlock :code="'Hello, world!\n30'" language="text" />
         <div class="oral-questions">
           <h3><CircleHelp :size="19" /> Вопросы для устного повторения</h3>
           <ol>
@@ -78,7 +78,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         <CodeBlock :code="repeatedPrice" language="javascript" />
         <p>Сохраним цену один раз и будем обращаться к ней по имени:</p>
         <CodeBlock :code="variablePrice" language="javascript" />
-        <CodeBlock code="1500\n2250\n3750" language="text" />
+        <CodeBlock :code="'1500\n2250\n3750'" language="text" />
         <div class="benefit-grid">
           <span><CheckCircle2 :size="17" /> повторное использование данных</span>
           <span><CheckCircle2 :size="17" /> понятный и читаемый код</span>
@@ -86,7 +86,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
           <span><CheckCircle2 :size="17" /> меньше случайных ошибок</span>
         </div>
         <RevealAnswer
-          code="const price = 500;\nconst count = 3;\n\nconsole.log(price * count);"
+          :code="'const price = 500;\nconst count = 3;\n\nconsole.log(price * count);'"
           answer="1500"
           explanation="В price хранится 500, в count — 3. Выражение price * count означает 500 * 3."
         />
@@ -99,7 +99,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
 
         <h3><code>let</code> — значение можно изменить</h3>
         <CodeBlock :code="letExample" language="javascript" />
-        <CodeBlock code="18\n19" language="text" />
+        <CodeBlock :code="'18\n19'" language="text" />
         <p>Строка <code>let age = 18</code> объявляет переменную и сразу присваивает ей значение. Строка <code>age = 19</code> не создаёт новую переменную, а меняет значение существующей.</p>
 
         <h3><code>const</code> — повторное присваивание запрещено</h3>
@@ -162,7 +162,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
       <LessonSection id="typeof" number="05" title="Оператор typeof">
         <p class="lead"><code>typeof</code> позволяет узнать тип значения. Результатом будет строка с названием типа.</p>
         <CodeBlock :code="typeofExample" language="javascript" />
-        <CodeBlock code="number\nstring\nboolean\nundefined" language="text" />
+        <CodeBlock :code="'number\nstring\nboolean\nundefined'" language="text" />
         <div class="lesson-table-wrap">
           <table class="lesson-table">
             <thead><tr><th>Выражение</th><th>Результат</th></tr></thead>
@@ -179,8 +179,8 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         <CodeBlock code="console.log(typeof null); // &quot;object&quot;" language="javascript" />
         <p>Результат <code>"object"</code> — давняя особенность JavaScript, сохранённая ради совместимости со старыми программами. Она <strong>не означает</strong>, что <code>null</code> — полноценный объект.</p>
         <RevealAnswer
-          code="const score = 100;\nconst message = &quot;100&quot;;\n\nconsole.log(typeof score);\nconsole.log(typeof message);"
-          answer="number\nstring"
+          :code="'const score = 100;\nconst message = &quot;100&quot;;\n\nconsole.log(typeof score);\nconsole.log(typeof message);'"
+          :answer="'number\nstring'"
           explanation="Кавычки превращают 100 в текст. Поэтому одинаково выглядящие значения имеют разные типы."
         />
       </LessonSection>
@@ -199,8 +199,8 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
           <div><CodeBlock code="console.log((2 + 3) * 4);" language="javascript" /><strong>20</strong><small>Сначала выражение в скобках</small></div>
         </div>
         <RevealAnswer
-          code="const a = 17;\nconst b = 5;\n\nconsole.log(a % b);\nconsole.log(2 ** 3);"
-          answer="2\n8"
+          :code="'const a = 17;\nconst b = 5;\n\nconsole.log(a % b);\nconsole.log(2 ** 3);'"
+          :answer="'2\n8'"
           explanation="После деления 17 на 5 остаётся 2. Выражение 2 ** 3 означает 2 · 2 · 2."
         />
       </LessonSection>
@@ -226,7 +226,7 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         <CodeBlock :code="incrementExample" language="javascript" />
         <p>На этом занятии достаточно знать, что <code>count++</code> увеличивает, а <code>count--</code> уменьшает значение на единицу. Разницу между префиксной и постфиксной формой рассмотрим позже.</p>
         <RevealAnswer
-          code="let x = 10;\n\nx += 5;\nx *= 2;\n\nconsole.log(x);"
+          :code="'let x = 10;\n\nx += 5;\nx *= 2;\n\nconsole.log(x);'"
           answer="30"
           explanation="Сначала x становится равен 15, затем текущее значение умножается на 2: 15 * 2 = 30."
         />
@@ -247,8 +247,8 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         </div>
         <InfoBlock type="warning" title="Неявное преобразование"><p>Если хотя бы один операнд <code>+</code> — строка, JavaScript обычно превращает второе значение в строку и соединяет их. Поэтому <code>"10" + 5</code> даёт <code>"105"</code>, а не <code>15</code>.</p></InfoBlock>
         <RevealAnswer
-          code="const points = 10;\n\nconsole.log(points + 5);\nconsole.log(&quot;Баллы: &quot; + points + 5);"
-          answer="15\nБаллы: 105"
+          :code="'const points = 10;\n\nconsole.log(points + 5);\nconsole.log(&quot;Баллы: &quot; + points + 5);'"
+          :answer="'15\nБаллы: 105'"
           explanation="В первой строке складываются числа. Во второй после появления строки оператор + соединяет значения слева направо."
         />
       </LessonSection>
@@ -302,8 +302,8 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
         </div>
         <InfoBlock type="info"><p>Пока используем логические операторы с boolean-значениями. Особенности сокращённого вычисления (<em>short-circuit evaluation</em>) изучим позже.</p></InfoBlock>
         <RevealAnswer
-          code="const age = 17;\nconst hasPermission = true;\nconst isBlocked = false;\n\nconsole.log(age >= 18 || hasPermission);\nconsole.log(!isBlocked);"
-          answer="true\ntrue"
+          :code="'const age = 17;\nconst hasPermission = true;\nconst isBlocked = false;\n\nconsole.log(age >= 18 || hasPermission);\nconsole.log(!isBlocked);'"
+          :answer="'true\ntrue'"
           explanation="Для || достаточно истинности одного условия: hasPermission равно true. Оператор ! меняет false на true."
         />
       </LessonSection>
