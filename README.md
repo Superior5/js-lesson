@@ -8,6 +8,7 @@
 - `/1` — «Введение в программирование, JavaScript и Node.js»;
 - `/2` — «Основы JavaScript: переменные, типы данных и операторы»;
 - `/http-lab-2` — лабораторная работа по HTTP и Express.
+- `/http-lab-3` — лабораторная работа по REST API и CRUD.
 
 Для прямого открытия маршрутов в production nginx должен возвращать `index.html` для неизвестных файлов:
 
@@ -33,7 +34,7 @@ npm run build
 ## Структура
 
 - `src/views/LessonOne.vue` и `src/views/LessonTwo.vue` — страницы занятий;
-- `src/views/HttpLabTwo.vue` — лабораторная работа по HTTP и Express;
+- `src/views/HttpLabTwo.vue` и `src/views/HttpLabThree.vue` — лабораторные работы по Express;
 - `src/components/` — переиспользуемые элементы интерфейса: шапка, навигация, секции, код, заметки и задания;
 - `src/data/lessons.js` — метаданные и навигация занятий;
 - `src/data/` — задания и дополнительные данные;

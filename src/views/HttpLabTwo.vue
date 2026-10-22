@@ -1,5 +1,4 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { AlertTriangle, ArrowDown, ArrowRight, BookCheck, Box, Braces, Check, CheckCircle2, ChevronDown, CircleDot, Clock3, Code2, Database, FileJson, FlaskConical, Globe2, GraduationCap, HardDrive, Laptop, Network, PackagePlus, Play, Plus, Radio, Route, Send, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-vue-next'
 import LabHeader from '../components/LabHeader.vue'
 import LabSidebar from '../components/LabSidebar.vue'
@@ -7,13 +6,13 @@ import LabSection from '../components/LabSection.vue'
 import CodeBlock from '../components/CodeBlock.vue'
 import InfoBlock from '../components/InfoBlock.vue'
 import { bonusTasks, controlQuestions, httpMethods, labNavigation, practiceTasks, statusCodes } from '../data/httpLabTwo'
+import { useLabPage } from '../composables/useLabPage'
 import '../styles/http-lab.css'
 
-const theme = ref('light')
-const menuOpen = ref(false)
-const activeId = ref('client-server')
-const progress = ref(0)
-let observer
+const { theme, menuOpen, activeId, progress, toggleTheme, navigate } = useLabPage(
+  'client-server',
+  'Лабораторная № 2 — HTTP и Express',
+)
 
 const httpExchange = 'GET /users HTTP/1.1\nHost: localhost:3000'
 const httpResponse = 'HTTP/1.1 200 OK\nContent-Type: application/json'
@@ -33,39 +32,14 @@ const validatedPost = 'app.post("/users", (req, res) => {\n  const { name, age }
 const finalServer = 'const express = require("express");\n\nconst app = express();\nconst PORT = 3000;\n\napp.use(express.json());\n\nconst users = [\n  { id: 1, name: "Adam", age: 18 },\n  { id: 2, name: "Ali", age: 19 }\n];\n\napp.get("/", (req, res) => {\n  res.send("Express server is running");\n});\n\napp.get("/users", (req, res) => {\n  res.json(users);\n});\n\napp.get("/users/:id", (req, res) => {\n  const id = Number(req.params.id);\n  const user = users.find(user => user.id === id);\n\n  if (!user) {\n    return res.status(404).json({\n      message: "Пользователь не найден"\n    });\n  }\n\n  res.json(user);\n});\n\napp.post("/users", (req, res) => {\n  const { name, age } = req.body;\n\n  if (!name || age === undefined) {\n    return res.status(400).json({\n      message: "Необходимо указать name и age"\n    });\n  }\n\n  const newUser = { id: users.length + 1, name, age };\n  users.push(newUser);\n  res.status(201).json(newUser);\n});\n\napp.listen(PORT, () => {\n  console.log(`Сервер запущен: http://localhost:${PORT}`);\n});'
 const curlPost = 'curl -X POST http://localhost:3000/users \\\n  -H "Content-Type: application/json" \\\n  -d \'{"name":"Maga","age":18}\''
 
-function toggleTheme() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
-  document.documentElement.dataset.theme = theme.value
-  localStorage.setItem('lab-theme', theme.value)
-}
-function navigate(id) {
-  menuOpen.value = false
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-function updateProgress() {
-  const max = document.documentElement.scrollHeight - window.innerHeight
-  progress.value = max > 0 ? Math.min(100, window.scrollY / max * 100) : 0
-}
-onMounted(() => {
-  theme.value = localStorage.getItem('lab-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-  document.documentElement.dataset.theme = theme.value
-  document.title = 'Лабораторная № 2 — HTTP и Express'
-  observer = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-    if (visible[0]) activeId.value = visible[0].target.id
-  }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, .15, .5] })
-  document.querySelectorAll('.lab-observe').forEach(section => observer.observe(section))
-  window.addEventListener('scroll', updateProgress, { passive: true }); updateProgress()
-})
-onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scroll', updateProgress) })
 </script>
 
 <template>
   <div class="lab-page">
     <div class="lab-reading-progress" :style="{ transform: `scaleX(${progress / 100})` }" />
-    <LabHeader :theme="theme" :menu-open="menuOpen" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
+    <LabHeader :theme="theme" :menu-open="menuOpen" :lab-number="2" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
     <div class="lab-layout">
-      <LabSidebar :items="labNavigation" :active-id="activeId" :open="menuOpen" @navigate="navigate" @close="menuOpen = false" />
+      <LabSidebar :items="labNavigation" :active-id="activeId" :open="menuOpen" :lab-number="2" @navigate="navigate" @close="menuOpen = false" />
       <main class="lab-main">
         <section id="lab-top" class="lab-hero">
           <div class="lab-hero-grid">
@@ -178,6 +152,9 @@ onBeforeUnmount(() => { observer?.disconnect(); window.removeEventListener('scro
           <section id="questions" class="questions-section lab-observe"><header><span>Q&A</span><div><small>ПРОВЕРЬТЕ СЕБЯ</small><h2>Контрольные вопросы</h2></div></header><ol><li v-for="question in controlQuestions" :key="question"><span>{{ question }}</span><ChevronDown :size="16" /></li></ol></section>
           <section id="submission" class="submission lab-observe"><div class="submission-main"><span><BookCheck /></span><div><small>ЧТО НУЖНО СДАТЬ</small><h2>Готовый Node.js-проект</h2><p>Преподаватель проверяет результат локально на компьютере студента.</p></div></div><div class="submission-grid"><div><strong>Обязательные маршруты</strong><code>GET /</code><code>GET /about</code><code>GET /students</code><code>GET /students/:id</code><code>POST /students</code></div><div><strong>Обязательные статусы</strong><span><b>200</b> OK</span><span><b>201</b> Created</span><span><b>400</b> Bad Request</span><span><b>404</b> Not Found</span></div><div><strong>Формат данных</strong><p>Все ответы с данными должны возвращаться в формате JSON.</p><span class="json-badge"><Braces /> JSON</span></div></div></section>
           <section class="learning-outcome"><small>ПОСЛЕ ЛАБОРАТОРНОЙ</small><h2>Вы понимаете полный путь запроса</h2><div><span>Клиент</span><ArrowRight /><span>HTTP</span><ArrowRight /><span>Express</span><ArrowRight /><span>Маршрут</span><ArrowRight /><span>Ответ</span></div><p>Следующий этап — query-параметры, middleware, подробная работа с маршрутами и полный CRUD.</p></section>
+          <nav class="lab-series-nav" aria-label="Навигация между лабораторными работами">
+            <RouterLink class="lab-series-link next" to="/http-lab-3"><span><small>СЛЕДУЮЩАЯ РАБОТА</small><strong>Лабораторная № 3</strong><em>REST API и CRUD</em></span><ArrowRight /></RouterLink>
+          </nav>
           <a class="back-course" href="/"><ArrowLeft /><span><small>ВЕРНУТЬСЯ К ДРУГОЙ ДИСЦИПЛИНЕ</small><strong>Основы программирования на JavaScript</strong></span></a>
           <footer class="lab-footer"><span class="lab-brand-mark small">HTTP</span><p>Серверная веб-разработка · Лабораторная № 2</p><a href="#lab-top">Наверх ↑</a></footer>
         </div>
