@@ -52,7 +52,37 @@ export const lessons = [
       ['homework', 'Домашнее задание'],
     ],
   },
+  {
+    id: 'lesson-three',
+    number: 3,
+    path: '/3',
+    title: 'Условные конструкции и управление выполнением программы',
+    shortTitle: 'Условия и ветвление',
+    description: 'Научимся принимать решения в программе: выполнять разный код с помощью if, else, else if, switch и тернарного оператора.',
+    duration: '90 минут',
+    level: 'Начальный уровень',
+    environment: 'Node.js',
+    decoration: ['if', 'else', '{ }'],
+    sections: [
+      ['recap', 'Повторение'],
+      ['branching', 'Ветвление программы'],
+      ['if-statement', 'Конструкция if'],
+      ['if-else', 'Конструкция if / else'],
+      ['else-if', 'Несколько вариантов'],
+      ['logical-conditions', 'Сложные условия'],
+      ['truthy-falsy', 'Truthy и falsy'],
+      ['nested-conditions', 'Вложенные условия'],
+      ['block-scope', 'Область видимости'],
+      ['ternary', 'Тернарный оператор'],
+      ['switch', 'Конструкция switch'],
+      ['mistakes', 'Частые ошибки'],
+      ['practice', 'Практические задания'],
+      ['review', 'Контрольные вопросы'],
+      ['homework', 'Домашнее задание'],
+    ],
+  },
 ]
 
 export const lessonOne = lessons[0]
 export const lessonTwo = lessons[1]
+export const lessonThree = lessons[2]

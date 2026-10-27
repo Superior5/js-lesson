@@ -1,5 +1,5 @@
 <script setup>
-import { ArrowLeft, BookOpenCheck, CheckCircle2, CircleHelp, Star } from 'lucide-vue-next'
+import { ArrowLeft, ArrowRight, BookOpenCheck, CheckCircle2, CircleHelp, Star } from 'lucide-vue-next'
 import LessonLayout from '../components/LessonLayout.vue'
 import LessonHero from '../components/LessonHero.vue'
 import LessonSection from '../components/LessonSection.vue'
@@ -352,10 +352,16 @@ const homeworkAnalysis = 'console.log(10 + "5");\nconsole.log(10 - "5");\nconsol
     </section>
 
     <div class="lesson-body">
-      <RouterLink class="next-lesson previous-lesson" to="/1" aria-label="Вернуться к первому занятию">
-        <span><ArrowLeft /></span>
-        <div><small>ПРЕДЫДУЩЕЕ ЗАНЯТИЕ</small><h2>Введение в JavaScript и Node.js</h2><p>программа <i /> алгоритм <i /> console.log <i /> Node.js</p></div>
-      </RouterLink>
+      <nav class="lesson-series-nav" aria-label="Навигация между занятиями">
+        <RouterLink class="next-lesson previous-lesson" to="/1" aria-label="Вернуться к первому занятию">
+          <span><ArrowLeft /></span>
+          <div><small>ПРЕДЫДУЩЕЕ ЗАНЯТИЕ</small><h2>Введение в JavaScript и Node.js</h2><p>программа <i /> алгоритм <i /> console.log <i /> Node.js</p></div>
+        </RouterLink>
+        <RouterLink class="next-lesson" to="/3" aria-label="Перейти к третьему занятию">
+          <div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Условные конструкции</h2><p>if <i /> else <i /> switch <i /> boolean</p></div>
+          <span><ArrowRight /></span>
+        </RouterLink>
+      </nav>
       <footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer>
     </div>
   </LessonLayout>
