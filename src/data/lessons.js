@@ -81,8 +81,39 @@ export const lessons = [
       ['homework', 'Домашнее задание'],
     ],
   },
+  {
+    id: 'lesson-four',
+    number: 4,
+    path: '/4',
+    title: 'Циклы и повторение действий в JavaScript',
+    shortTitle: 'Циклы и повторение',
+    description: 'Научимся повторять действия с помощью while, do...while и for, управлять итерациями и решать задачи со счётчиками и накопителями.',
+    duration: '90 минут',
+    level: 'Начальный уровень',
+    environment: 'Node.js',
+    decoration: ['for', 'while', '++'],
+    sections: [
+      ['recap', 'Повторение'],
+      ['why-loops', 'Зачем нужны циклы'],
+      ['while', 'Цикл while'],
+      ['counter', 'Счётчик и изменение'],
+      ['do-while', 'Цикл do...while'],
+      ['for', 'Цикл for'],
+      ['trace', 'Как выполняется for'],
+      ['accumulator', 'Счётчики и накопители'],
+      ['conditions', 'Условия внутри цикла'],
+      ['break', 'Оператор break'],
+      ['continue', 'Оператор continue'],
+      ['nested', 'Вложенные циклы'],
+      ['choice-mistakes', 'Выбор цикла и ошибки'],
+      ['practice', 'Практические задания'],
+      ['review', 'Контрольные вопросы'],
+      ['homework', 'Домашнее задание'],
+    ],
+  },
 ]
 
 export const lessonOne = lessons[0]
 export const lessonTwo = lessons[1]
 export const lessonThree = lessons[2]
+export const lessonFour = lessons[3]

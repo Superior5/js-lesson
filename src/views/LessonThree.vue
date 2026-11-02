@@ -507,10 +507,10 @@ if (score >= 90 && !hasDebt) {
           <span><ArrowLeft /></span>
           <div><small>ПРЕДЫДУЩЕЕ ЗАНЯТИЕ</small><h2>Переменные, типы и операторы</h2><p>let <i /> const <i /> typeof <i /> сравнения</p></div>
         </RouterLink>
-        <div class="next-lesson lesson-disabled" aria-disabled="true">
+        <RouterLink class="next-lesson" to="/4" aria-label="Перейти к четвёртому занятию">
           <div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Циклы и повторение действий</h2><p>for <i /> while <i /> break <i /> continue</p></div>
           <span><ArrowRight /></span>
-        </div>
+        </RouterLink>
       </nav>
       <footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer>
     </div>

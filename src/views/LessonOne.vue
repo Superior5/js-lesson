@@ -63,7 +63,7 @@ const homeworkPrediction = '// Я думаю, здесь будет 10\nconsole.
 
         <LessonSection id="setup" number="06" title="Установка и запуск" kicker="ПЕРВАЯ ПРОГРАММА">
           <h3>Проверьте Node.js</h3><p>Откройте терминал и выполните команды:</p>
-          <CodeBlock code="node -v" language="bash" /><CodeBlock code="v24.x.x" language="text" />
+          <CodeBlock code="node -v" language="bash" /><CodeBlock code="v26.x.x" language="text" />
           <CodeBlock code="npm -v" language="bash" />
           <p class="muted">npm устанавливается вместе с Node.js. Подробно мы познакомимся с ним позже.</p>
           <hr />
