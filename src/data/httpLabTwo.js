@@ -36,7 +36,7 @@ export const statusCodes = [
 export const practiceTasks = [
   { n: '01', title: 'Подготовьте проект', text: 'Создайте Node.js-проект, установите Express и запустите сервер на порту 3000.', endpoint: 'PORT 3000' },
   { n: '02', title: 'Корневой маршрут', text: 'Создайте маршрут, который возвращает текст «Мой первый Express-сервер».', endpoint: 'GET /' },
-  { n: '03', title: 'Информация о курсе', text: 'Верните JSON с полями course, lesson и topic.', endpoint: 'GET /about', code: '{\n  "course": "JavaScript",\n  "lesson": 2,\n  "topic": "HTTP и Express"\n}' },
+  { n: '03', title: 'Информация о курсе', text: 'Верните JSON с полями course, lesson и topic.', endpoint: 'GET /about', code: '{\n  "course": "JavaScript",\n  "lesson": 1,\n  "topic": "HTTP и Express"\n}' },
   { n: '04', title: 'Список студентов', text: 'Создайте массив students с двумя студентами и верните его целиком.', endpoint: 'GET /students' },
   { n: '05', title: 'Студент по ID', text: 'Найдите студента по req.params.id. Если его нет — верните 404 и сообщение об ошибке.', endpoint: 'GET /students/:id' },
   { n: '06', title: 'Добавление студента', text: 'Принимайте name и group, добавляйте студента в массив и возвращайте созданный объект со статусом 201.', endpoint: 'POST /students' },

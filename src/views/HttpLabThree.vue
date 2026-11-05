@@ -15,7 +15,7 @@ import '../styles/http-lab.css'
 
 const { theme, menuOpen, activeId, progress, toggleTheme, navigate } = useLabPage(
   'recap',
-  'Лабораторная № 3 — REST API и CRUD',
+  'Лабораторная № 2 — REST API и CRUD',
 )
 
 const recapServer = `import express from "express";
@@ -570,10 +570,10 @@ false`
     <LabHeader
       :theme="theme"
       :menu-open="menuOpen"
-      :lab-number="3"
+      :lab-number="2"
       mark="REST"
-      back-to="/http-lab-2"
-      back-label="Лабораторная № 2"
+      back-to="/express-js-1"
+      back-label="Лабораторная № 1"
       @toggle-theme="toggleTheme"
       @toggle-menu="menuOpen = !menuOpen"
     />
@@ -582,7 +582,7 @@ false`
         :items="labThreeNavigation"
         :active-id="activeId"
         :open="menuOpen"
-        :lab-number="3"
+        :lab-number="2"
         result="REST API с CRUD, фильтрацией, сортировкой и пагинацией"
         @navigate="navigate"
         @close="menuOpen = false"
@@ -592,7 +592,7 @@ false`
         <section id="lab-top" class="lab-hero lab-three-hero">
           <div class="lab-hero-grid">
             <div class="lab-hero-copy">
-              <div class="lab-eyebrow"><FlaskConical :size="15" /> Лабораторная работа № 3</div>
+              <div class="lab-eyebrow"><FlaskConical :size="15" /> Лабораторная работа № 2</div>
               <h1>Проектирование <span>REST API</span> и реализация CRUD</h1>
               <p>Научимся работать с ресурсами, параметрами маршрутов и query-параметрами, реализуем CRUD, фильтрацию, сортировку и пагинацию данных с помощью Express.js.</p>
               <div class="lab-meta">
@@ -942,15 +942,15 @@ false`
             <small>ОБРАЗОВАТЕЛЬНЫЙ РЕЗУЛЬТАТ</small>
             <h2>Вы можете спроектировать небольшой REST API</h2>
             <div><span>Ресурсы</span><ArrowRight /><span>CRUD</span><ArrowRight /><span>Фильтры</span><ArrowRight /><span>Сортировка</span><ArrowRight /><span>Пагинация</span></div>
-            <p>Следующая тема — middleware, схемы Zod и централизованная обработка ошибок.</p>
+            <p>На следующем занятии разберём middleware, next() и Router на небольших примерах. Проверку данных и ошибки изучим отдельно, в занятии № 4.</p>
           </section>
 
           <nav class="lab-series-nav two-sided" aria-label="Навигация между лабораторными работами">
-            <RouterLink class="lab-series-link previous" to="/http-lab-2"><ArrowLeft /><span><small>ПРЕДЫДУЩАЯ РАБОТА</small><strong>Лабораторная № 2</strong><em>HTTP и первый Express-сервер</em></span></RouterLink>
-            <div class="lab-series-link disabled" aria-disabled="true"><span><small>СЛЕДУЮЩАЯ РАБОТА</small><strong>Лабораторная № 4</strong><em>Middleware, Zod и ошибки · скоро</em></span><ArrowRight /></div>
+            <RouterLink class="lab-series-link previous" to="/express-js-1"><ArrowLeft /><span><small>ПРЕДЫДУЩАЯ РАБОТА</small><strong>Лабораторная № 1</strong><em>HTTP и первый Express-сервер</em></span></RouterLink>
+            <RouterLink class="lab-series-link next" to="/express-js-3"><span><small>СЛЕДУЮЩАЯ РАБОТА</small><strong>Лабораторная № 3</strong><em>Middleware и Router: как проходит запрос</em></span><ArrowRight /></RouterLink>
           </nav>
 
-          <footer class="lab-footer"><span class="lab-brand-mark small">REST</span><p>Разработка веб-приложений · Лабораторная № 3</p><a href="#lab-top">Наверх ↑</a></footer>
+          <footer class="lab-footer"><span class="lab-brand-mark small">REST</span><p>Разработка веб-приложений · Лабораторная № 2</p><a href="#lab-top">Наверх ↑</a></footer>
         </div>
       </main>
     </div>

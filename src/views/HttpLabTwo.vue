@@ -1,5 +1,5 @@
 <script setup>
-import { AlertTriangle, ArrowDown, ArrowRight, BookCheck, Box, Braces, Check, CheckCircle2, ChevronDown, CircleDot, Clock3, Code2, Database, FileJson, FlaskConical, Globe2, GraduationCap, HardDrive, Laptop, Network, PackagePlus, Play, Plus, Radio, Route, Send, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-vue-next'
+import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookCheck, Box, Braces, Check, CheckCircle2, ChevronDown, CircleDot, Clock3, Code2, Database, FileJson, FlaskConical, Globe2, GraduationCap, HardDrive, Laptop, Network, PackagePlus, Play, Plus, Radio, Route, Send, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-vue-next'
 import LabHeader from '../components/LabHeader.vue'
 import LabSidebar from '../components/LabSidebar.vue'
 import LabSection from '../components/LabSection.vue'
@@ -11,7 +11,7 @@ import '../styles/http-lab.css'
 
 const { theme, menuOpen, activeId, progress, toggleTheme, navigate } = useLabPage(
   'client-server',
-  'Лабораторная № 2 — HTTP и Express',
+  'Лабораторная № 1 — HTTP и Express',
 )
 
 const httpExchange = 'GET /users HTTP/1.1\nHost: localhost:3000'
@@ -37,14 +37,14 @@ const curlPost = 'curl -X POST http://localhost:3000/users \\\n  -H "Content-Typ
 <template>
   <div class="lab-page">
     <div class="lab-reading-progress" :style="{ transform: `scaleX(${progress / 100})` }" />
-    <LabHeader :theme="theme" :menu-open="menuOpen" :lab-number="2" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
+    <LabHeader :theme="theme" :menu-open="menuOpen" :lab-number="1" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
     <div class="lab-layout">
-      <LabSidebar :items="labNavigation" :active-id="activeId" :open="menuOpen" :lab-number="2" @navigate="navigate" @close="menuOpen = false" />
+      <LabSidebar :items="labNavigation" :active-id="activeId" :open="menuOpen" :lab-number="1" @navigate="navigate" @close="menuOpen = false" />
       <main class="lab-main">
         <section id="lab-top" class="lab-hero">
           <div class="lab-hero-grid">
             <div class="lab-hero-copy">
-              <div class="lab-eyebrow"><FlaskConical :size="15" /> Лабораторная работа № 2</div>
+              <div class="lab-eyebrow"><FlaskConical :size="15" /> Лабораторная работа № 1</div>
               <h1>HTTP и первый <span>Express</span>-сервер</h1>
               <p>Разберём путь запроса от клиента до сервера, научимся читать HTTP и создадим API с маршрутами GET и POST.</p>
               <div class="lab-meta"><span><Clock3 :size="17" /> 120 минут</span><span><GraduationCap :size="18" /> Базовый уровень</span><span><Laptop :size="17" /> Node.js + Express</span></div>
@@ -151,12 +151,12 @@ const curlPost = 'curl -X POST http://localhost:3000/users \\\n  -H "Content-Typ
         <div class="lab-content lab-bottom">
           <section id="questions" class="questions-section lab-observe"><header><span>Q&A</span><div><small>ПРОВЕРЬТЕ СЕБЯ</small><h2>Контрольные вопросы</h2></div></header><ol><li v-for="question in controlQuestions" :key="question"><span>{{ question }}</span><ChevronDown :size="16" /></li></ol></section>
           <section id="submission" class="submission lab-observe"><div class="submission-main"><span><BookCheck /></span><div><small>ЧТО НУЖНО СДАТЬ</small><h2>Готовый Node.js-проект</h2><p>Преподаватель проверяет результат локально на компьютере студента.</p></div></div><div class="submission-grid"><div><strong>Обязательные маршруты</strong><code>GET /</code><code>GET /about</code><code>GET /students</code><code>GET /students/:id</code><code>POST /students</code></div><div><strong>Обязательные статусы</strong><span><b>200</b> OK</span><span><b>201</b> Created</span><span><b>400</b> Bad Request</span><span><b>404</b> Not Found</span></div><div><strong>Формат данных</strong><p>Все ответы с данными должны возвращаться в формате JSON.</p><span class="json-badge"><Braces /> JSON</span></div></div></section>
-          <section class="learning-outcome"><small>ПОСЛЕ ЛАБОРАТОРНОЙ</small><h2>Вы понимаете полный путь запроса</h2><div><span>Клиент</span><ArrowRight /><span>HTTP</span><ArrowRight /><span>Express</span><ArrowRight /><span>Маршрут</span><ArrowRight /><span>Ответ</span></div><p>Следующий этап — query-параметры, middleware, подробная работа с маршрутами и полный CRUD.</p></section>
+          <section class="learning-outcome"><small>ПОСЛЕ ЛАБОРАТОРНОЙ</small><h2>Вы понимаете полный путь запроса</h2><div><span>Клиент</span><ArrowRight /><span>HTTP</span><ArrowRight /><span>Express</span><ArrowRight /><span>Маршрут</span><ArrowRight /><span>Ответ</span></div><p>Следующий этап — REST API, query-параметры и полный CRUD.</p></section>
           <nav class="lab-series-nav" aria-label="Навигация между лабораторными работами">
-            <RouterLink class="lab-series-link next" to="/http-lab-3"><span><small>СЛЕДУЮЩАЯ РАБОТА</small><strong>Лабораторная № 3</strong><em>REST API и CRUD</em></span><ArrowRight /></RouterLink>
+            <RouterLink class="lab-series-link next" to="/express-js-2"><span><small>СЛЕДУЮЩАЯ РАБОТА</small><strong>Лабораторная № 2</strong><em>REST API и CRUD</em></span><ArrowRight /></RouterLink>
           </nav>
-          <a class="back-course" href="/"><ArrowLeft /><span><small>ВЕРНУТЬСЯ К ДРУГОЙ ДИСЦИПЛИНЕ</small><strong>Основы программирования на JavaScript</strong></span></a>
-          <footer class="lab-footer"><span class="lab-brand-mark small">HTTP</span><p>Серверная веб-разработка · Лабораторная № 2</p><a href="#lab-top">Наверх ↑</a></footer>
+          <a class="back-course" href="/"><ArrowLeft /><span><small>ВЫБРАТЬ КУРС</small><strong>Все учебные курсы</strong></span></a>
+          <footer class="lab-footer"><span class="lab-brand-mark small">HTTP</span><p>Серверная веб-разработка · Лабораторная № 1</p><a href="#lab-top">Наверх ↑</a></footer>
         </div>
       </main>
     </div>
