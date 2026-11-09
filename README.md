@@ -1,6 +1,6 @@
 # Основы программирования — занятия по JavaScript
 
-Учебное веб-приложение для студентов первого курса. Материал знакомит с программами, алгоритмами, JavaScript и Node.js, а затем разбирает переменные, типы данных, операторы, условные конструкции и циклы.
+Учебное веб-приложение для студентов первого курса. Материал знакомит с программами, алгоритмами, JavaScript и Node.js, а затем разбирает переменные, типы данных, операторы, условные конструкции, циклы и массивы.
 
 ## Маршруты
 
@@ -9,6 +9,7 @@
 - `/2` — «Основы JavaScript: переменные, типы данных и операторы»;
 - `/3` — «Условные конструкции и управление выполнением программы»;
 - `/4` — «Циклы и повторение действий в JavaScript»;
+- `/5` — «Массивы и коллекции данных в JavaScript»;
 - `/express-js-1` — «HTTP и первый Express-сервер»;
 - `/express-js-2` — «REST API и CRUD»: фильтрация, сортировка и пагинация;
 - `/express-js-3` — «Middleware и Router: как проходит запрос» — первая часть для начинающих;
@@ -40,7 +41,7 @@ npm run build
 ## Структура
 
 - `src/views/HomeView.vue` — главная страница с двумя плитками курсов;
-- `src/views/LessonOne.vue`–`src/views/LessonFour.vue` — страницы занятий;
+- `src/views/LessonOne.vue`–`src/views/LessonFive.vue` — страницы занятий;
 - `src/views/HttpLabTwo.vue`, `src/views/HttpLabThree.vue`, `src/views/ExpressJsThree.vue` и `src/views/ExpressJsFour.vue` — занятия Express № 1–4;
 - `src/components/ExpressLessonPage.vue` — общий макет занятий Express № 3–4;
 - `src/data/expressJsThree.js` и `src/data/expressJsFour.js` — учебные примеры, навигация, практика и вопросы занятий № 3–4;

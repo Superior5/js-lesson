@@ -111,9 +111,40 @@ export const lessons = [
       ['homework', 'Домашнее задание'],
     ],
   },
+  {
+    id: 'lesson-five',
+    number: 5,
+    path: '/5',
+    title: 'Массивы и коллекции данных в JavaScript',
+    shortTitle: 'Массивы и коллекции',
+    description: 'Научимся хранить наборы значений в массивах, обращаться к элементам по индексам, изменять коллекции и обрабатывать их с помощью циклов.',
+    duration: '90 минут',
+    level: 'Начальный уровень',
+    environment: 'Node.js',
+    decoration: ['[ ]', 'length', 'push'],
+    sections: [
+      ['recap', 'Повторение'],
+      ['why-arrays', 'Зачем нужны массивы'],
+      ['creating', 'Создание массива'],
+      ['indexes', 'Индексы элементов'],
+      ['length', 'Свойство length'],
+      ['changing', 'Изменение элементов'],
+      ['methods', 'Добавление и удаление'],
+      ['for-loop', 'Перебор через for'],
+      ['for-of', 'Цикл for...of'],
+      ['calculations', 'Вычисления по массиву'],
+      ['search', 'Поиск элементов'],
+      ['nested-arrays', 'Вложенные массивы'],
+      ['mistakes', 'Частые ошибки'],
+      ['practice', 'Практические задания'],
+      ['review', 'Контрольные вопросы'],
+      ['homework', 'Домашнее задание'],
+    ],
+  },
 ]
 
 export const lessonOne = lessons[0]
 export const lessonTwo = lessons[1]
 export const lessonThree = lessons[2]
 export const lessonFour = lessons[3]
+export const lessonFive = lessons[4]

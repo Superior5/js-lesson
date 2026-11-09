@@ -4,6 +4,16 @@ import { ArrowRight, BookOpenText, Code2, Server } from 'lucide-vue-next'
 import { lessons } from '../data/lessons'
 import { expressLessons } from '../data/expressLessons'
 
+function formatLessonCount(count) {
+  const lastTwoDigits = count % 100
+  const lastDigit = count % 10
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return `${count} занятий`
+  if (lastDigit === 1) return `${count} занятие`
+  if (lastDigit >= 2 && lastDigit <= 4) return `${count} занятия`
+  return `${count} занятий`
+}
+
 onMounted(() => {
   document.title = 'Учебные курсы — JavaScript и Express.js'
   if (!document.documentElement.dataset.theme) {
@@ -24,14 +34,14 @@ onMounted(() => {
 
     <nav class="courses-grid" aria-label="Выбор учебного курса">
       <RouterLink class="course-tile javascript-tile" :to="lessons[0].path">
-        <span class="course-tile-top"><span class="course-tile-icon"><Code2 :size="28" /></span><span>{{ lessons.length }} занятия</span></span>
+        <span class="course-tile-top"><span class="course-tile-icon"><Code2 :size="28" /></span><span>{{ formatLessonCount(lessons.length) }}</span></span>
         <h2>JavaScript</h2>
-        <p>Основы программирования: от первых программ и переменных до условий и циклов.</p>
-        <span class="course-tile-topics">Node.js · Типы данных · Операторы · Циклы</span>
+        <p>Основы программирования: от первых программ и переменных до условий, циклов и массивов.</p>
+        <span class="course-tile-topics">Node.js · Типы данных · Циклы · Массивы</span>
         <span class="course-tile-action">Перейти к занятиям <ArrowRight :size="20" /></span>
       </RouterLink>
       <RouterLink class="course-tile express-tile" :to="expressLessons[0].path">
-        <span class="course-tile-top"><span class="course-tile-icon"><Server :size="28" /></span><span>{{ expressLessons.length }} занятия</span></span>
+        <span class="course-tile-top"><span class="course-tile-icon"><Server :size="28" /></span><span>{{ formatLessonCount(expressLessons.length) }}</span></span>
         <h2>Express.js</h2>
         <p>Серверная разработка: HTTP, создание API, маршруты, проверка данных и обработка ошибок.</p>
         <span class="course-tile-topics">HTTP · REST API · Middleware · Router</span>

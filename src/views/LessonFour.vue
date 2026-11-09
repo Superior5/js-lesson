@@ -536,10 +536,10 @@ console.log(result);`
           <span><ArrowLeft /></span>
           <div><small>ПРЕДЫДУЩЕЕ ЗАНЯТИЕ</small><h2>Условные конструкции</h2><p>if <i /> else <i /> switch <i /> boolean</p></div>
         </RouterLink>
-        <div class="next-lesson lesson-disabled" aria-disabled="true">
+        <RouterLink class="next-lesson" to="/5" aria-label="Перейти к пятому занятию">
           <div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Массивы и коллекции данных</h2><p>array <i /> length <i /> index <i /> перебор</p></div>
           <span><ArrowRight /></span>
-        </div>
+        </RouterLink>
       </nav>
       <footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer>
     </div>

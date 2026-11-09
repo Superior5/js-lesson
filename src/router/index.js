@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import LessonOne from '../views/LessonOne.vue'
-import LessonTwo from '../views/LessonTwo.vue'
-import LessonThree from '../views/LessonThree.vue'
-import LessonFour from '../views/LessonFour.vue'
-import HttpLabTwo from '../views/HttpLabTwo.vue'
-import HttpLabThree from '../views/HttpLabThree.vue'
-import ExpressJsThree from '../views/ExpressJsThree.vue'
-import ExpressJsFour from '../views/ExpressJsFour.vue'
+
+const HomeView = () => import('../views/HomeView.vue')
+const LessonOne = () => import('../views/LessonOne.vue')
+const LessonTwo = () => import('../views/LessonTwo.vue')
+const LessonThree = () => import('../views/LessonThree.vue')
+const LessonFour = () => import('../views/LessonFour.vue')
+const LessonFive = () => import('../views/LessonFive.vue')
+const HttpLabTwo = () => import('../views/HttpLabTwo.vue')
+const HttpLabThree = () => import('../views/HttpLabThree.vue')
+const ExpressJsThree = () => import('../views/ExpressJsThree.vue')
+const ExpressJsFour = () => import('../views/ExpressJsFour.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +19,7 @@ const router = createRouter({
     { path: '/2', name: 'lesson-two', component: LessonTwo },
     { path: '/3', name: 'lesson-three', component: LessonThree },
     { path: '/4', name: 'lesson-four', component: LessonFour },
+    { path: '/5', name: 'lesson-five', component: LessonFive },
     { path: '/express-js-1', name: 'express-js-one', component: HttpLabTwo },
     { path: '/express-js-2', name: 'express-js-two', component: HttpLabThree },
     { path: '/express-js-3', name: 'express-js-three', component: ExpressJsThree },
