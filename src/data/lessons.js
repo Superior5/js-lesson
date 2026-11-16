@@ -141,6 +141,36 @@ export const lessons = [
       ['homework', 'Домашнее задание'],
     ],
   },
+  {
+    id: 'lesson-six',
+    number: 6,
+    path: '/6',
+    title: 'Функции и декомпозиция программ в JavaScript',
+    shortTitle: 'Функции и декомпозиция',
+    description: 'Научимся выделять повторяемую логику в функции, передавать данные через параметры, возвращать результат и собирать программу из небольших понятных частей.',
+    duration: '90 минут',
+    level: 'Начальный уровень',
+    environment: 'Node.js',
+    decoration: ['function', '( )', 'return'],
+    sections: [
+      ['recap', 'Повторение'],
+      ['why-functions', 'Зачем нужны функции'],
+      ['declaration', 'Объявление и вызов'],
+      ['parameters', 'Параметры и аргументы'],
+      ['return', 'Возврат результата'],
+      ['console-vs-return', 'return и console.log'],
+      ['early-return', 'Ранний return'],
+      ['defaults', 'Значения по умолчанию'],
+      ['scope', 'Область видимости'],
+      ['arrays', 'Функции и массивы'],
+      ['composition', 'Декомпозиция программы'],
+      ['function-forms', 'Формы записи функций'],
+      ['mistakes', 'Частые ошибки'],
+      ['practice', 'Практические задания'],
+      ['review', 'Контрольные вопросы'],
+      ['homework', 'Домашнее задание'],
+    ],
+  },
 ]
 
 export const lessonOne = lessons[0]
@@ -148,3 +178,4 @@ export const lessonTwo = lessons[1]
 export const lessonThree = lessons[2]
 export const lessonFour = lessons[3]
 export const lessonFive = lessons[4]
+export const lessonSix = lessons[5]

@@ -584,10 +584,10 @@ console.log(result);`
           <span><ArrowLeft /></span>
           <div><small>ПРЕДЫДУЩЕЕ ЗАНЯТИЕ</small><h2>Циклы и повторение</h2><p>for <i /> while <i /> break <i /> continue</p></div>
         </RouterLink>
-        <div class="next-lesson lesson-disabled" aria-disabled="true">
+        <RouterLink class="next-lesson" to="/6" aria-label="Перейти к шестому занятию">
           <div><small>СЛЕДУЮЩЕЕ ЗАНЯТИЕ</small><h2>Функции и декомпозиция</h2><p>function <i /> parameters <i /> return <i /> scope</p></div>
           <span><ArrowRight /></span>
-        </div>
+        </RouterLink>
       </nav>
       <footer><span class="brand-mark small">JS</span><p>Основы программирования · 1 курс</p><a href="#top">Наверх ↑</a></footer>
     </div>

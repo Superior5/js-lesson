@@ -36,8 +36,8 @@ onMounted(() => {
       <RouterLink class="course-tile javascript-tile" :to="lessons[0].path">
         <span class="course-tile-top"><span class="course-tile-icon"><Code2 :size="28" /></span><span>{{ formatLessonCount(lessons.length) }}</span></span>
         <h2>JavaScript</h2>
-        <p>Основы программирования: от первых программ и переменных до условий, циклов и массивов.</p>
-        <span class="course-tile-topics">Node.js · Типы данных · Циклы · Массивы</span>
+        <p>Основы программирования: от первых программ и переменных до циклов, массивов и функций.</p>
+        <span class="course-tile-topics">Node.js · Циклы · Массивы · Функции</span>
         <span class="course-tile-action">Перейти к занятиям <ArrowRight :size="20" /></span>
       </RouterLink>
       <RouterLink class="course-tile express-tile" :to="expressLessons[0].path">

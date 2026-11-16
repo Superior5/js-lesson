@@ -6,6 +6,7 @@ const LessonTwo = () => import('../views/LessonTwo.vue')
 const LessonThree = () => import('../views/LessonThree.vue')
 const LessonFour = () => import('../views/LessonFour.vue')
 const LessonFive = () => import('../views/LessonFive.vue')
+const LessonSix = () => import('../views/LessonSix.vue')
 const HttpLabTwo = () => import('../views/HttpLabTwo.vue')
 const HttpLabThree = () => import('../views/HttpLabThree.vue')
 const ExpressJsThree = () => import('../views/ExpressJsThree.vue')
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: '/3', name: 'lesson-three', component: LessonThree },
     { path: '/4', name: 'lesson-four', component: LessonFour },
     { path: '/5', name: 'lesson-five', component: LessonFive },
+    { path: '/6', name: 'lesson-six', component: LessonSix },
     { path: '/express-js-1', name: 'express-js-one', component: HttpLabTwo },
     { path: '/express-js-2', name: 'express-js-two', component: HttpLabThree },
     { path: '/express-js-3', name: 'express-js-three', component: ExpressJsThree },
