@@ -6,17 +6,21 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import bash from 'highlight.js/lib/languages/bash'
 import json from 'highlight.js/lib/languages/json'
 import http from 'highlight.js/lib/languages/http'
+import css from 'highlight.js/lib/languages/css'
+import xml from 'highlight.js/lib/languages/xml'
 
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('json', json)
 hljs.registerLanguage('http', http)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('html', xml)
 
 const props = defineProps({ code: { type: String, required: true }, language: { type: String, default: 'javascript' }, label: String })
 const copied = ref(false)
 const cleanCode = computed(() => props.code.trim())
 const highlighted = computed(() => props.language === 'text' ? escapeHtml(cleanCode.value) : hljs.highlight(cleanCode.value, { language: props.language }).value)
-const languageLabel = computed(() => props.label || ({ javascript: 'JavaScript', bash: 'Terminal', json: 'JSON', http: 'HTTP', text: 'Результат' }[props.language] || props.language))
+const languageLabel = computed(() => props.label || ({ javascript: 'JavaScript', bash: 'Terminal', json: 'JSON', http: 'HTTP', css: 'CSS', html: 'HTML', text: 'Результат' }[props.language] || props.language))
 
 function escapeHtml(value) { return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;') }
 async function copyCode() {

@@ -11,6 +11,7 @@ const HttpLabTwo = () => import('../views/HttpLabTwo.vue')
 const HttpLabThree = () => import('../views/HttpLabThree.vue')
 const ExpressJsThree = () => import('../views/ExpressJsThree.vue')
 const ExpressJsFour = () => import('../views/ExpressJsFour.vue')
+const WebCssOne = () => import('../views/WebCssOne.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,7 @@ const router = createRouter({
     { path: '/4', name: 'lesson-four', component: LessonFour },
     { path: '/5', name: 'lesson-five', component: LessonFive },
     { path: '/6', name: 'lesson-six', component: LessonSix },
+    { path: '/web-css-1', name: 'web-css-one', component: WebCssOne },
     { path: '/express-js-1', name: 'express-js-one', component: HttpLabTwo },
     { path: '/express-js-2', name: 'express-js-two', component: HttpLabThree },
     { path: '/express-js-3', name: 'express-js-three', component: ExpressJsThree },

@@ -1,8 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
-import { ArrowRight, BookOpenText, Code2, Server } from 'lucide-vue-next'
+import { ArrowRight, BookOpenText, Code2, Paintbrush, Server } from 'lucide-vue-next'
 import { lessons } from '../data/lessons'
 import { expressLessons } from '../data/expressLessons'
+import { webLessons } from '../data/webLessons'
 
 function formatLessonCount(count) {
   const lastTwoDigits = count % 100
@@ -15,7 +16,7 @@ function formatLessonCount(count) {
 }
 
 onMounted(() => {
-  document.title = 'Учебные курсы — JavaScript и Express.js'
+  document.title = 'Учебные курсы — JavaScript, Express.js и веб-разработка'
   if (!document.documentElement.dataset.theme) {
     document.documentElement.dataset.theme = localStorage.getItem('lesson-theme')
       || localStorage.getItem('lab-theme')
@@ -47,6 +48,13 @@ onMounted(() => {
         <span class="course-tile-topics">HTTP · REST API · Middleware · Router</span>
         <span class="course-tile-action">Перейти к занятиям <ArrowRight :size="20" /></span>
       </RouterLink>
+      <RouterLink class="course-tile web-tile" :to="webLessons[0].path">
+        <span class="course-tile-top"><span class="course-tile-icon"><Paintbrush :size="28" /></span><span>{{ formatLessonCount(webLessons.length) }}</span></span>
+        <h2>Веб-разработка</h2>
+        <p>После знакомства с HTML начинаем оформлять страницы с помощью CSS.</p>
+        <span class="course-tile-topics">CSS · Селекторы · Цвет · Отступы</span>
+        <span class="course-tile-action">Перейти к занятиям <ArrowRight :size="20" /></span>
+      </RouterLink>
     </nav>
   </main>
 </template>
@@ -60,7 +68,9 @@ onMounted(() => {
 .courses-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
 .course-tile { --tile-accent:var(--accent); --tile-soft:var(--accent-soft); display:flex; flex-direction:column; padding:32px; border:1px solid var(--line); border-radius:22px; background:var(--surface); box-shadow:var(--shadow); text-decoration:none; transition:transform .2s,border-color .2s; }
 .express-tile { --tile-accent:#087f8c; --tile-soft:#e6f6f5; }
+.web-tile { --tile-accent:#b35420; --tile-soft:#fff0e5; }
 :global([data-theme="dark"]) .express-tile { --tile-accent:#35c7c4; --tile-soft:#183536; }
+:global([data-theme="dark"]) .web-tile { --tile-accent:#f3a66e; --tile-soft:#3b281e; }
 .course-tile:hover { transform:translateY(-4px); border-color:var(--tile-accent); }
 .course-tile-top { display:flex; align-items:center; justify-content:space-between; gap:16px; color:var(--muted); font-size:12px; font-weight:700; }
 .course-tile-icon { display:grid; width:58px; height:58px; place-items:center; border-radius:15px; color:var(--tile-accent); background:var(--tile-soft); }

@@ -3,7 +3,7 @@ import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { BookOpenText, Check, ChevronDown, Download } from 'lucide-vue-next'
 
-defineProps({ lessons: { type: Array, required: true }, courseLabel: { type: String, required: true } })
+defineProps({ lessons: { type: Array, required: true }, courseLabel: { type: String, required: true }, showNodeDownload: { type: Boolean, default: true } })
 
 const route = useRoute()
 const courseMenu = ref(null)
@@ -52,6 +52,7 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', closeCourseMen
     </nav>
   </details>
   <a
+    v-if="showNodeDownload"
     class="node-download"
     :href="nodeDownloadUrl"
     download="node-v26.13.0-x64.msi"

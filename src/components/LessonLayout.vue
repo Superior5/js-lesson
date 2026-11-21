@@ -7,6 +7,12 @@ const props = defineProps({
   navigation: { type: Array, required: true },
   lessonNumber: { type: Number, required: true },
   title: { type: String, required: true },
+  courseLessons: Array,
+  courseLabel: String,
+  brandTitle: String,
+  brandSubtitle: String,
+  brandMark: String,
+  showNodeDownload: { type: Boolean, default: true },
 })
 
 const { theme, menuOpen, activeId, progress, toggleTheme, navigate } = useLessonPage(
@@ -17,7 +23,18 @@ const { theme, menuOpen, activeId, progress, toggleTheme, navigate } = useLesson
 
 <template>
   <div class="reading-progress" :style="{ transform: `scaleX(${progress / 100})` }" />
-  <AppHeader :theme="theme" :menu-open="menuOpen" @toggle-theme="toggleTheme" @toggle-menu="menuOpen = !menuOpen" />
+  <AppHeader
+    :theme="theme"
+    :menu-open="menuOpen"
+    :course-lessons="courseLessons"
+    :course-label="courseLabel"
+    :brand-title="brandTitle"
+    :brand-subtitle="brandSubtitle"
+    :brand-mark="brandMark"
+    :show-node-download="showNodeDownload"
+    @toggle-theme="toggleTheme"
+    @toggle-menu="menuOpen = !menuOpen"
+  />
   <div class="app-shell">
     <LessonSidebar
       :items="navigation"

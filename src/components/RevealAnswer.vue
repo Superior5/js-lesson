@@ -8,6 +8,7 @@ defineProps({
   answer: { type: String, required: true },
   explanation: { type: String, required: true },
   title: { type: String, default: 'Какой будет результат?' },
+  language: { type: String, default: 'javascript' },
 })
 
 const open = ref(false)
@@ -16,7 +17,7 @@ const open = ref(false)
 <template>
   <article class="reveal-card">
     <div class="reveal-heading"><span>ПРОВЕРЬТЕ СЕБЯ</span><h3>{{ title }}</h3></div>
-    <CodeBlock :code="code" language="javascript" />
+    <CodeBlock :code="code" :language="language" />
     <button type="button" :aria-expanded="open" @click="open = !open">
       <EyeOff v-if="open" :size="17" /><Eye v-else :size="17" />
       {{ open ? 'Скрыть ответ' : 'Показать ответ' }}
